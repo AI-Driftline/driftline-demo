@@ -1,7 +1,7 @@
 from openai import OpenAI
 
 client = OpenAI()
-MODEL = "gpt-4o-mini-2024-07-18"
+MODEL = "gpt-6-luna"
 
 
 def summarize_ticket(text: str) -> str:
