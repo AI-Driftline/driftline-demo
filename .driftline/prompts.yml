@@ -1,0 +1,30 @@
+# The prompts this demo app sends, each with checks on what the answer must (not) say.
+prompts:
+  - id: ticket-summary-gemini
+    model: gemini-2.5-flash
+    prompt: "Summarize this support ticket in one sentence: Our office printer jams on every second page since Monday and we need someone to fix it today."
+    must_include: [printer]
+  - id: sentiment-gemini
+    model: gemini-2.5-flash
+    prompt: "Answer with one word, positive, negative or neutral: The printer broke again and nobody called back."
+    must_include: [negative]
+    must_not_include: [positive]
+  - id: invoice-json-gemini
+    model: gemini-2.5-flash
+    prompt: "Return only JSON with vendor, total and currency for this invoice: ACME GmbH, total 1250.00 EUR"
+    expect: json
+    same_fields: [vendor, currency]
+  - id: ticket-summary-openai
+    model: gpt-4o-mini-2024-07-18
+    prompt: "Summarize this support ticket in one sentence: Our office printer jams on every second page since Monday and we need someone to fix it today."
+    must_include: [printer]
+  - id: sentiment-openai
+    model: gpt-4o-mini-2024-07-18
+    prompt: "Answer with one word, positive, negative or neutral: The printer broke again and nobody called back."
+    must_include: [negative]
+    must_not_include: [positive]
+  - id: invoice-json-openai
+    model: gpt-4o-mini-2024-07-18
+    prompt: "Return only JSON with vendor, total and currency for this invoice: ACME GmbH, total 1250.00 EUR"
+    expect: json
+    same_fields: [vendor, currency]
