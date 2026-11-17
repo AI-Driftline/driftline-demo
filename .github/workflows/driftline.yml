@@ -1,0 +1,18 @@
+name: driftline
+on: [workflow_dispatch]
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  driftline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: AI-Driftline/driftline@v0
+        with:
+          fix-pr: true
+          fail-on: never
+          license-key: ${{ secrets.DRIFTLINE_LICENSE_KEY }}
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
